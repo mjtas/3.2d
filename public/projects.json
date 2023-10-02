@@ -1,0 +1,7 @@
+{
+    "projects": [
+      {"id": 1, "name": "Scrabble", "details": "Classic scrabble game with GUI", "text": "C++ with splashkit library, single player and multiplayer options", "show": false},
+      {"id": 2, "name": "Calculator", "details": "On-screen calculator with GUI", "text": "HTML, CSS and Javascript"},
+      {"id": 3, "name": "Hidden Valley Workshops", "details": "Workshop booking website", "text": "Vue3 with Node JS, Express and MongoDB", "show": false}
+    ]
+  }
