@@ -189,7 +189,7 @@ h1, h2 {
     display: flex;
     list-style: none;
     padding: 0;
-    gap: 10vw;
+    gap: 2.5vw;
 }
 
 .router {
@@ -496,11 +496,29 @@ table {
   width: 100%;
 }
 
+/* Styling for input fields */
+.input-field {
+  margin-bottom: 20px;
+}
+
+.input-field label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 /* For screens smaller than 768px (phones) */
 @media (max-width: 768px) {
   /* Adjust alignment and display for navbar links */
   .navbar-ul {
-    gap: 4vw;
+    gap: 1vw;
   }
 
   .main-container {

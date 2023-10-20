@@ -1,53 +1,90 @@
 <template>
-    <div class="home">
-      <div class="main">
-        <div class="about-container">
-          <div class="main-heading">
-            <h1>Contact Me</h1>
-          </div>
-          <div class="about-other">
-            <div class="about-left">
-                <ul class="contact-text">
-                <li class="main-li">
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name" v-model="name"><br>
-                <label for="user_email">Email Address:</label><br>
-                <input type="email" id="user_email" name="email" placeholder="you@example.com" v-model="email" required><br>
-                <label for="message">Your enquiry:</label><br>
-                <!-- Use textarea for the message input -->
-                <textarea class="message-input" id="message" name="message" rows="4" cols="50" v-model="message"></textarea><br>
-                <button type="button" class="button button1" @click="submitForm">Send</button>
-                </li>
+  <div class="home">
+    <div class="main">
+      <div class="about-container">
+        <div class="main-heading">
+          <h1>Contact Me</h1>
+        </div>
+        <div class="about-other">
+          <div class="about-left">
+            <ul class="contact-text">
+              <li class="main-li">
+                <label for="user-name">Name:</label><br>
+                <input type="text" id="user-name" name="user-name" v-model="userName"><br>
+                <label for="user-email">Email Address:</label><br>
+                <input
+                  type="email"
+                  id="user-email"
+                  name="user-email"
+                  placeholder="you@example.com"
+                  :class="{ 'invalid': emailInvalid }"
+                  @input="validateEmail"
+                  v-model="userEmail"
+                  required
+                >
+                <span v-if="emailInvalid && emailTouched" class="error-message"><br>Invalid email format</span><br>
+                <textarea class="message-input" id="user-message" name="user-message" rows="4" cols="50" v-model="userMessage" required></textarea><br>
+                <button type="button" class="button button1" @click="submitForm" :disabled="!isFormValid">Send</button>
+              </li>
             </ul>
             <div class="main-image">
-            <img class="contact-image" src="../assets/contact.png" alt="Message">
-          </div>
+              <img class="contact-image" src="../assets/contact.png" alt="Message">
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  </template>
- 
+</template>
 
-<script setup>
-import { ref } from 'vue';
-
-const name = ref('');
-const email = ref('');
-const message = ref('');
-const emailsReceived = ref([]);
-
-const submitForm = () => {
-  if (message.value) {
-    emailsReceived.value.push({ name: name.value, email: email.value, message: message.value });
-    console.log('Emails Received:', emailsReceived.value);
+<script>
+export default {
+  data() {
+    return {
+      userEmail: '',
+      userName: '',
+      userMessage: '',
+      emailInvalid: false,
+      emailTouched: false,
+      emailsReceived: [],
   }
+  },
+  computed: {
+    isFormValid() {
+      return !this.emailInvalid && this.userMessage;
+    },
+  },
+  methods: {
+    validateEmail() {
+      const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+      this.emailInvalid = !emailRegex.test(this.userEmail);
+      this.emailTouched = true;
+    },
 
-  // Clear form fields and checkboxes
-  name.value = '';
-  email.value = '';
-  message.value = '';
+    submitForm() {
+      if (this.isFormValid) {
+        // Form for questions about workshops is submitted
+        // Handle form submission here
+        console.log('Name:', this.userName);
+        console.log('Email:', this.userEmail);
+        console.log('Message:', this.userMessage);
+
+        // Clear form fields
+        this.userName = '';
+        this.userEmail = '';
+        this.userMessage = '';
+      }
+    },
+  },
 };
 </script>
-    
+
+<style scoped>
+.invalid {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+}
+</style>

@@ -6,7 +6,9 @@
           <router-link to="/" class="router">Home</router-link> 
           <router-link to="/about" class="router">About</router-link> 
           <router-link to="/projects" class="router">Projects</router-link> 
+          <router-link to="/blog" class="router">Blog</router-link>  
           <router-link to="/contact" class="router">Contact</router-link>
+          <router-link to="/login" class="router">Log In</router-link>
         </ul>
       </div>
     </div>
