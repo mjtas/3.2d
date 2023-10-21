@@ -2,7 +2,7 @@
   <div class="home">
     <div class="main">
       <div class="main-container">
-        <div class="main-heading">
+        <div class="main-heading fadeInUp">
           <h1>MJ Bickel</h1>
           <h2>Software Engineer Intern</h2>
         </div>

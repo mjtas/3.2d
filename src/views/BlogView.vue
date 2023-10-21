@@ -1,20 +1,27 @@
 <template>
-    <div class="blog">
-      <div v-for="post in blogPosts" :key="post._id">
-        <BlogPost :post="post"/>
-      </div>
+    <div class="home">
+      <div class="main">
+        <div class="about-container">
+          <div class="main-heading">
+            <h1>Blog</h1>
+                <div v-for="post in blogPosts" :key="post._id">
+                <BlogPost :post="post"/>
+                </div>
   
-      <!-- Add form for adding new posts -->
-      <div v-if="currentLogIn">
-        <h2>Add New Blog Post</h2>
-        <form @submit.prevent="addPost">
-          <InputField label="Title:" v-model="title" :required="true" />
-          <InputField label="Content:" v-model="content" :required="true" />
-          <button class="button button1" type="submit">Add Post</button>
-        </form>
-      </div>
+                <!-- Add form for adding new posts -->
+                <div v-if="currentLogIn">
+                    <h2>Add New Blog Post</h2>
+                    <form @submit.prevent="addPost">
+                        <InputField label="Title:" v-model:value="title" :required="true" />
+                        <InputField label="Content:" v-model:value="content" :required="true" />
+                        <button class="button button1" type="submit">Add Post</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-  </template>
+</div>
+</template>
   
   <script>
   import axios from 'axios';

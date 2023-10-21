@@ -8,8 +8,8 @@
           <div class="about-other">
             <div class="about-left">
               <form @submit.prevent="login">
-                <InputField label="Username" type="text" v-model="userName" required />
-                <InputField label="Password" type="password" v-model="passWord" required />
+                <InputField label="Username" type="text" v-model:value="userName" required />
+                <InputField label="Password" type="password" v-model:value="passWord" required />
                 <div class="field">
                   <button class="button button1" type="submit" :disabled="isLoading">{{ isLoading ? 'Logging In...' : 'Login' }}</button>
                 </div>
@@ -43,15 +43,15 @@
           this.isLoading = true;
           
           // Send login credentials to the Express server
-          const response = await axios.post('/api/login', {
+          const response = await axios.post('http://localhost:3000/api/login', {
             userName: this.userName,
             passWord: this.passWord,
           });
   
           if (response.data.success) {
             alert("Login successful!");
-            const router = useRouter();
-            router.push({ path: "/" }); // Redirect to home after successful login
+            const router = this.$router;
+            router.push({ path: "/" });
           } else {
             alert("Login failed. Please check your username and password.");
           }

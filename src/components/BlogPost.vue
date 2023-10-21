@@ -1,9 +1,13 @@
 <template>
-    <div>
-      <h2>{{ post.title }}</h2>
-      <p>{{ post.content }}</p>
+  <div class="about-other">
+    <h2>{{ post.title }}</h2>
+    <div class="about-left">
+            <ul class="about-text">
+              <li class="main-li">{{ post.content }}</li>
+          </ul>
     </div>
-  </template>
+  </div>
+</template>
   
   <script>
   export default {

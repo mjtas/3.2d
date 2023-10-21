@@ -8,8 +8,8 @@
         <div class="about-other">
           <div class="about-left">
             <form @submit.prevent="register">
-              <InputField label="Username" type="text" v-model="userName" required />
-              <InputField label="Password" type="password" v-model="passWord" required />
+              <InputField label="Username" type="text" v-model:value="userName" required />
+              <InputField label="Password" type="password" v-model:value="passWord" required />
               <div class="field">
                 <button type="submit" class="button button1" :disabled="isLoading">{{ isLoading ? 'Registering...' : 'Register' }}</button>
               </div>
