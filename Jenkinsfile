@@ -28,6 +28,16 @@ pipeline {
                 echo 'zap-cli --start --spider <target_url>'
                 echo 'zap-cli --active-scan <target_url>'
             }
+            post{
+                always{
+                    emailext (
+                        subject: 'Security Scan Status',
+                        to: 's223304608@deakin.edu.au',
+                        body: "${currentBuild.result}: Job ",
+                        attachLog: true,
+                    )
+                }
+            }
         }
         stage('Deploy to Staging') {
             steps {
@@ -42,6 +52,16 @@ pipeline {
         
                 echo 'Run integration tests using Supertest on staging environment'
                 echo 'npm run test:integration:staging'
+            }
+            post{
+                always{
+                    emailext (
+                        subject: 'Integration Tests on Staging Status',
+                        to: 's223304608@deakin.edu.au',
+                        body: "${currentBuild.result}: Job ",
+                        attachLog: true,
+                    )
+                }
             }
         }
         stage('Deploy to Production') {
