@@ -32,7 +32,7 @@ pipeline {
                 always{
                     emailext (
                         subject: 'Security Scan Status',
-                        to: 's223304608@deakin.edu.au',
+                        to: 'mjbickel@duck.com',
                         body: "${currentBuild.result}: Job ",
                         attachLog: true,
                     )
@@ -57,7 +57,7 @@ pipeline {
                 always{
                     emailext (
                         subject: 'Integration Tests on Staging Status',
-                        to: 's223304608@deakin.edu.au',
+                        to: 'mjbickel@duck.com',
                         body: "${currentBuild.result}: Job ",
                         attachLog: true,
                     )
