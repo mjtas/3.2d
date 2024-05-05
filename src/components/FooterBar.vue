@@ -1,7 +1,7 @@
 <template>
 <div class="footer-container">
     <footer class="footer">
-      <p>&copy; 2023 mjtas. All rights reserved.</p>
+      <p>2023 mjtas</p>
     </footer>
 </div>
 </template>
